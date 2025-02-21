@@ -14,7 +14,7 @@ Projeto de um CRUD baseado em um sistema bancário, para a disciplina de Program
 
 | Nome | GitHub | Linkedin | Foto |
 |------|--------|----------|------|
-| **Gabriel Nogueira** | [gabrielnog13](https://github.com/gabrielnog13) | [Gabriel Nogueira](https://www.linkedin.com/in/gabrielnog13/) | <img style="border-radius: 50%" src="https://github.com/user-attachments/assets/697af017-6dfe-43eb-80bc-c275c3e27c87" width="80px;" alt="Gabriel"/> |
+| **Gabriel Nogueira Brandão Oliveira** | [gabrielnog13](https://github.com/gabrielnog13) | [Gabriel Nogueira](https://www.linkedin.com/in/gabrielnog13/) | <img style="border-radius: 50%" src="https://github.com/user-attachments/assets/697af017-6dfe-43eb-80bc-c275c3e27c87" width="80px;" alt="Gabriel"/> |
 | **Hailton de Melo Lima Neto** | [hailtonneto](https://github.com/hailtonneto) | [Hailton Neto](https://www.linkedin.com/in/hailton-neto-2a81a1196/) | <img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/130097508?v=4" width="80px;" alt="Hailton"/> |
 | **Luccas José Bezerra Fernandes** | [brokendeveloper](https://github.com/brokendeveloper) | [Luccas Fernandes](https://www.linkedin.com/in/luccas-fernandes-07a283239/) | <img style="border-radius: 50%" src="https://github.com/user-attachments/assets/a70ef660-ca80-4ee2-b52b-839a85b65863" width="80px;" alt="Luccas"/> |
 | **Pedro Fernandes Cavalcanti Ferreira** | [fernandes-pedro](https://github.com/fernandes-pedro) | [Pedro Fernandes Cavalcanti Ferreira](https://www.linkedin.com/in/pedro-fernandes-cavalcanti-ferreira-621591241/) | <img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/180231483?v=4" width="80px;" alt="Pedro"/> |
