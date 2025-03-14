@@ -1,7 +1,7 @@
 # 📒 Documentação do Projeto
 
 <p align="justify">
-Projeto de um CRUD baseado em um sistema bancário, para a disciplina de Programação Orientada a Objetos.
+Projeto de um Sistema Bancário, para a disciplina de Programação Orientada a Objetos.
 
 - Histórias de Usuário: [Docs](https://docs.google.com/document/d/1LPuNzA818wmWqfB-BqDbfuLC_J_DybOAsH4cZ6EV2io/edit?usp=sharing)
 - Prótotipo Lo-Fi: [Figma](https://www.figma.com/design/lzPT31RB0w2aoAeWWl14mn/Untitled?node-id=0-1&m=dev&t=9cF5jMYkNecUnVDZ-1)
