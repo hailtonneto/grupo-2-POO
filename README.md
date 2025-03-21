@@ -5,7 +5,7 @@ Projeto de um Sistema Bancário, para a disciplina de Programação Orientada a 
 
 - Histórias de Usuário: [Docs](https://docs.google.com/document/d/1LPuNzA818wmWqfB-BqDbfuLC_J_DybOAsH4cZ6EV2io/edit?usp=sharing)
 - Prótotipo Lo-Fi: [Figma](https://www.figma.com/design/lzPT31RB0w2aoAeWWl14mn/Untitled?node-id=0-1&m=dev&t=9cF5jMYkNecUnVDZ-1)
-- Screencast do Protótipo:
+- Screencast do Protótipo: [Screencast](https://youtu.be/MXjEJrIXQXo)
 </p>
 
 <div style="display: inline_block"><br>
