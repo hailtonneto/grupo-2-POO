@@ -12,6 +12,8 @@ Projeto de um Sistema Bancário, para a disciplina de Programação Orientada a 
 
 ## 🏋🏻‍♀️ Entrega 02 (09/04/2025)
 
+- Diagrama de Classes: [Miro](https://miro.com/app/board/uXjVIMNLSog=/)
+
 <div style="display: inline_block"><br>
   <img align="center" alt="java" heigth="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg">
   <img align="center" alt="figma" heigth="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg">
