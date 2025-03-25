@@ -18,11 +18,6 @@ Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesm
 
 - Diagrama de Classes: [Miro](https://miro.com/welcomeonboard/SnhFMC8wQVBMZS9zcXVDeWxINTZGR3JmL1RObndMMkpmeXhLMFZITlVtZTQwZ2E3KzhUQXdHTlZsd0owMmhxMjRSV1ZGWUs5bmE3aDZYYmdVSEQ5L0lTSnZqS2JsSHcwOEVycUdBK3NJdkZ3UzRnMjJUcnltS1dhNXlaa29HRXFyVmtkMG5hNDA3dVlncnBvRVB2ZXBnPT0hdjE=?share_link_id=374898219816)
 
-<div style="display: inline_block"><br>
-  <img align="center" alt="java" heigth="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg">
-  <img align="center" alt="figma" heigth="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg">
-</div>
-
 <br>
 
 ## 🌐 Autores
