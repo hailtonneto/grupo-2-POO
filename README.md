@@ -1,8 +1,12 @@
-# 📒 Documentação do Projeto
+# 📒 Cesar Bank
 
-<p align="justify">
-Projeto de um Sistema Bancário, para a disciplina de Programação Orientada a Objetos.
-</p>
+Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesmo visa a criação de uma aplicação bancária, desenvolvida com **Java + Spring Boot** no seu backend e **React Native** no frontend. Além disso, o banco de dados escolhido foi **PostgresSQL** rodando em **Docker**.
+
+## 🚀 Tecnologias Utilizadas
+- Java 17 + Spring Boot
+- React Native + TypeScript + Tailwind CSS 
+- PostgreSQL 
+- Docker 
 
 ## ✍🏻 Entrega 01 (22/03/2025)
 

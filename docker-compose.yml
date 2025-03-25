@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: bank-app
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    networks:
+      - bank-network
+    volumes:
+      - bank-app-data:/var/lib/postgresql/data
+
+networks:
+  bank-network:
+    driver: bridge
+
+volumes:
+  bank-app-data:
