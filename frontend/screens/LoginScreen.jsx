@@ -1,5 +1,6 @@
 import { useFonts, Inter_400Regular, Inter_700Bold } from "@expo-google-fonts/inter"
 import { useState } from "react"
+import { useNavigation } from "@react-navigation/native";
 import {
   Image,
   View,
@@ -15,6 +16,8 @@ import Logo from "../components/logo"
 import Footer from "../components/Footer"
 
 export default function LoginScreen() {
+  const navigation = useNavigation(); 
+
   const [credentials, setCredentials] = useState({
     login: "",
     senha: "",
@@ -61,7 +64,7 @@ export default function LoginScreen() {
           </View>
         </ScrollView>
       </TouchableWithoutFeedback>
-      <Footer/>
+      <Footer navigation={navigation}/>
     </SafeAreaView>
   )
 }

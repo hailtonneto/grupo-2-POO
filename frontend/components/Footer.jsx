@@ -1,10 +1,14 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import { Pressable, View, Text, TouchableOpacity, StyleSheet } from "react-native"
 
-export default function Footer() {
+export default function Footer({navigation}) {
   return (
     <View style={styles.footer}>
       <TouchableOpacity>
-        <Text style={styles.footerText}>Trocar ou abrir conta</Text>
+      <Pressable onPress={() => navigation.navigate("SignUp")}>
+        <Text style={styles.text}>
+          Trocar ou abrir conta
+        </Text>
+      </Pressable>
       </TouchableOpacity>
     </View>
   )
@@ -15,11 +19,11 @@ const styles = StyleSheet.create({
     marginBottom:40,
     marginLeft:210,
     alignItems: "center",
+    backgroundColor: "white",
   },
-  footerText: {
-    color: "#42a5f5",
-    fontSize: 18,
-    fontWeight: "bold",
-    fontFamily: "InterRegular",
+  text: {
+    color: "#42a5f5", 
+    fontSize: 18, 
+    fontFamily: "InterBold",
   },
 })
