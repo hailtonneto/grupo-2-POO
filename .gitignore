@@ -92,4 +92,6 @@ frontend/.flowconfig
 frontend/.buckconfig
 
 # env e variaveis de ambiente
-.env.local
+.env
+*.env
+!.env.example
