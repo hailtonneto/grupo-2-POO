@@ -1,19 +1,30 @@
-import { View, Text, TextInput, StyleSheet } from "react-native"
+import { View, Text, TextInput, StyleSheet } from "react-native";
 
-export default function InputField({ label, value, onChangeText, secureTextEntry = false }) {
+export default function InputField({ 
+  label, 
+  value, 
+  onChangeText, 
+  placeholder, 
+  keyboardType = "default",
+  secureTextEntry = false,
+  maxLength,
+  labelColor = "#000"
+}) {
   return (
     <View style={styles.inputContainer}>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={[styles.label, { color: labelColor }]}>{label}</Text>
       <TextInput
         style={styles.input}
-        placeholder={label}
+        placeholder={placeholder || label}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
+        keyboardType={keyboardType}
+        maxLength={maxLength}
         autoCapitalize="none"
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -23,7 +34,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 8,
-    color: "#000",
     fontFamily: "InterRegular",
   },
   input: {
@@ -35,4 +45,4 @@ const styles = StyleSheet.create({
     width: "100%",
     fontFamily: "InterRegular",
   },
-})
+});
