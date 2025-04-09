@@ -4,7 +4,7 @@ Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesm
 
 ## 🚀 Tecnologias Utilizadas
 - Java 17 + Spring Boot
-- React Native + TypeScript + Tailwind CSS 
+- React Native + TypeScript + StyleSheet CSS 
 - PostgreSQL 
 - Docker 
 
@@ -17,6 +17,7 @@ Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesm
 ## 🏋🏻‍♀️ Entrega 02 (09/04/2025)
 
 - Diagrama de Classes: [Miro](https://miro.com/welcomeonboard/SnhFMC8wQVBMZS9zcXVDeWxINTZGR3JmL1RObndMMkpmeXhLMFZITlVtZTQwZ2E3KzhUQXdHTlZsd0owMmhxMjRSV1ZGWUs5bmE3aDZYYmdVSEQ5L0lTSnZqS2JsSHcwOEVycUdBK3NJdkZ3UzRnMjJUcnltS1dhNXlaa29HRXFyVmtkMG5hNDA3dVlncnBvRVB2ZXBnPT0hdjE=?share_link_id=374898219816)
+- Screencast: [Screencast](https://youtu.be/9nJGwfglaHM)
 
 <br>
 
