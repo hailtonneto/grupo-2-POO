@@ -34,8 +34,8 @@ export default function SignUpScreen() {
 
   const handleSubmit = () => {
     console.log("Form Data on Submit:", formData);
-    console.log("Formulário válido, redirecionando para Login...");
-    navigation.navigate("Login");
+    console.log("Formulário válido, redirecionando para Home...");
+    navigation.navigate("Home");
     
   };
 

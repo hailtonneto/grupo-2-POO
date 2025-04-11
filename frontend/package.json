@@ -11,14 +11,15 @@
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
+    "@expo-google-fonts/kadwa": "^0.3.0",
     "@react-navigation/native": "^7.1.0",
     "@react-navigation/stack": "^7.2.4",
     "expo": "^52.0.42",
-    "expo-font": "^13.0.4",
+    "expo-font": "~13.0.4",
     "expo-status-bar": "~2.0.1",
     "lucide-react-native": "^0.487.0",
     "react": "18.3.1",
-    "react-native": "^0.76.8"
+    "react-native": "^0.76.9"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
