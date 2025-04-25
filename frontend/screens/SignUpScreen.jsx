@@ -36,7 +36,6 @@ export default function SignUpScreen() {
     console.log("Form Data on Submit:", formData);
     console.log("Formulário válido, redirecionando para Home...");
     navigation.navigate("Home");
-    
   };
 
   const isFormValid =
