@@ -17,7 +17,14 @@ Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesm
 ## 🏋🏻‍♀️ Entrega 02 (09/04/2025)
 
 - Diagrama de Classes: [Miro](https://miro.com/welcomeonboard/SnhFMC8wQVBMZS9zcXVDeWxINTZGR3JmL1RObndMMkpmeXhLMFZITlVtZTQwZ2E3KzhUQXdHTlZsd0owMmhxMjRSV1ZGWUs5bmE3aDZYYmdVSEQ5L0lTSnZqS2JsSHcwOEVycUdBK3NJdkZ3UzRnMjJUcnltS1dhNXlaa29HRXFyVmtkMG5hNDA3dVlncnBvRVB2ZXBnPT0hdjE=?share_link_id=374898219816)
+- Issue/bug tracker: [Trello](https://trello.com/invite/b/680f8201350eb660e570697a/ATTI3ca851e6e3422ee8b2f8231e95fa9135AA80CEBF/aplicativo-bancario-poo)
 - Screencast: [Screencast](https://youtu.be/9nJGwfglaHM)
+## 📱 Entrega 03 (30/04/2025)
+
+- Diagrama de Classes (Atualizado): [Miro](https://miro.com/welcomeonboard/SnhFMC8wQVBMZS9zcXVDeWxINTZGR3JmL1RObndMMkpmeXhLMFZITlVtZTQwZ2E3KzhUQXdHTlZsd0owMmhxMjRSV1ZGWUs5bmE3aDZYYmdVSEQ5L0lTSnZqS2JsSHcwOEVycUdBK3NJdkZ3UzRnMjJUcnltS1dhNXlaa29HRXFyVmtkMG5hNDA3dVlncnBvRVB2ZXBnPT0hdjE=?share_link_id=374898219816)
+- Issue/bug tracker (Atualizado): [Trello](https://trello.com/invite/b/680f8201350eb660e570697a/ATTI3ca851e6e3422ee8b2f8231e95fa9135AA80CEBF/aplicativo-bancario-poo)
+- Screencast: ...
+- Screencast (Teste Automatizado): ...
 
 <br>
 
