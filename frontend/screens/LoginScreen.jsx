@@ -38,6 +38,7 @@ export default function LoginScreen() {
 
   const handleLogin = () => {
     console.log("Login attempt with:", credentials)
+    navigation.navigate("SecureLogin")
   }
 
   return (
