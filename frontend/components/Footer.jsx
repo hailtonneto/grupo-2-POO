@@ -1,17 +1,15 @@
 import { Pressable, View, Text, TouchableOpacity, StyleSheet } from "react-native"
 
-export default function Footer({navigation}) {
+export default function Footer({ navigation, style }) {
   return (
-    <View style={styles.footer}>
-      <TouchableOpacity>
+    <View style={[styles.footer, style]}>
       <Pressable onPress={() => navigation.navigate("SignUp")}>
         <Text style={styles.text}>
           Trocar ou abrir conta
         </Text>
       </Pressable>
-      </TouchableOpacity>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
