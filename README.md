@@ -12,12 +12,19 @@ Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesm
 
 - Histórias de Usuário: [Docs](https://docs.google.com/document/d/1LPuNzA818wmWqfB-BqDbfuLC_J_DybOAsH4cZ6EV2io/edit?usp=sharing)
 - Prótotipo Lo-Fi: [Figma](https://www.figma.com/design/lzPT31RB0w2aoAeWWl14mn/Untitled?node-id=0-1&m=dev&t=9cF5jMYkNecUnVDZ-1)
-- Screencast do Protótipo: [Screencast](https://youtu.be/MXjEJrIXQXo)
+- Screencast do Protótipo: [YouTube](https://youtu.be/MXjEJrIXQXo)
 
 ## 🏋🏻‍♀️ Entrega 02 (09/04/2025)
 
 - Diagrama de Classes: [Miro](https://miro.com/welcomeonboard/SnhFMC8wQVBMZS9zcXVDeWxINTZGR3JmL1RObndMMkpmeXhLMFZITlVtZTQwZ2E3KzhUQXdHTlZsd0owMmhxMjRSV1ZGWUs5bmE3aDZYYmdVSEQ5L0lTSnZqS2JsSHcwOEVycUdBK3NJdkZ3UzRnMjJUcnltS1dhNXlaa29HRXFyVmtkMG5hNDA3dVlncnBvRVB2ZXBnPT0hdjE=?share_link_id=374898219816)
-- Screencast: [Screencast](https://youtu.be/9nJGwfglaHM)
+- Issue/bug tracker: [Trello](https://trello.com/invite/b/680f8201350eb660e570697a/ATTI3ca851e6e3422ee8b2f8231e95fa9135AA80CEBF/aplicativo-bancario-poo)
+- Screencast: [YouTube](https://youtu.be/9nJGwfglaHM)
+## 📱 Entrega 03 (30/04/2025)
+
+- Diagrama de Classes (Atualizado): [Miro](https://miro.com/welcomeonboard/SnhFMC8wQVBMZS9zcXVDeWxINTZGR3JmL1RObndMMkpmeXhLMFZITlVtZTQwZ2E3KzhUQXdHTlZsd0owMmhxMjRSV1ZGWUs5bmE3aDZYYmdVSEQ5L0lTSnZqS2JsSHcwOEVycUdBK3NJdkZ3UzRnMjJUcnltS1dhNXlaa29HRXFyVmtkMG5hNDA3dVlncnBvRVB2ZXBnPT0hdjE=?share_link_id=374898219816)
+- Issue/bug tracker (Atualizado): [Trello](https://trello.com/invite/b/680f8201350eb660e570697a/ATTI3ca851e6e3422ee8b2f8231e95fa9135AA80CEBF/aplicativo-bancario-poo)
+- Screencast: [YouTube](https://youtube.com/shorts/N4QBy2_saGA)
+- Screencast (Teste Automatizado): ...
 
 <br>
 

@@ -12,17 +12,24 @@ import { useNavigation } from "@react-navigation/native";
 import Logo from "../components/logo"
 import { useFonts, Kadwa_400Regular, Kadwa_700Bold } from "@expo-google-fonts/kadwa";
 import {
-  Eye,
-  Search,
-  User,
   ChevronRight
 } from 'lucide-react-native'
 
-export default function BankApp() {
+export default function HomeScreen() {
   const navigation = useNavigation();
   const [isBalanceVisible, setBalanceVisible] = React.useState(false)
   const [isSearching, setSearching] = React.useState(false)
   const [searchText, setSearchText] = React.useState('')
+
+  const handlePix = () => {
+    console.log("Redirecionando para Pix...");
+    navigation.navigate("Pix");
+  };
+  const handlePayment = () => {
+    console.log("Redirecionando para Pagamentos...");
+    navigation.navigate("Payment");
+  };
+
   const [fontsLoaded] = useFonts({
       "Kadwa-Regular": Kadwa_400Regular,
       "Kadwa-Bold": Kadwa_700Bold,
@@ -31,6 +38,7 @@ export default function BankApp() {
     if (!fontsLoaded) {
       return null;
     }
+  
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -81,8 +89,20 @@ export default function BankApp() {
           </View>
 
           <View style={styles.actionButtons}>
-            <ActionButton label="Pix" icon={require('../assets/pix.png')} />
-            <ActionButton label="Pagar" icon={require('../assets/barcode.png')} />
+            <TouchableOpacity onPress={handlePix}>
+            <ActionButton
+              label="Pix"
+              icon={require('../assets/pix.png')}
+              onPress={handlePix}
+            />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handlePix}>
+            <ActionButton
+              label="Pagar"
+              icon={require('../assets/barcode.png')}
+              onPress={handlePayment}
+            />
+            </TouchableOpacity>
             <ActionButton label="Cartões" icon={require('../assets/cards.png')} />
           </View>
         </View>
@@ -109,9 +129,9 @@ export default function BankApp() {
   )
 }
 
-function ActionButton({ label, icon }) {
+function ActionButton({ label, icon, onPress }) {
   return (
-    <TouchableOpacity style={styles.actionButton}>
+    <TouchableOpacity style={styles.actionButton} onPress={onPress}>
       <Image source={icon} style={styles.actionIcon} />
       <Text style={styles.actionText}>{label}</Text>
     </TouchableOpacity>
