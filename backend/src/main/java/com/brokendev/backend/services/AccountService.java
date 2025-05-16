@@ -20,7 +20,7 @@ public class AccountService {
     @Autowired
     private UserRepository userRepository;
 
-    public AccountBalanceResponseDTO getSaldo(String email){
+    public AccountBalanceResponseDTO getBalance(String email){
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
