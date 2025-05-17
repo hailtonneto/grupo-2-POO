@@ -1,5 +1,6 @@
 package com.brokendev.backend.services;
 
+import com.brokendev.backend.domain.Account;
 import com.brokendev.backend.domain.User;
 import com.brokendev.backend.dto.LoginRequestDTO;
 import com.brokendev.backend.dto.LoginResponseDTO;
@@ -7,17 +8,23 @@ import com.brokendev.backend.dto.RegisterRequestDTO;
 import com.brokendev.backend.dto.RegisterResponseDTO;
 import com.brokendev.backend.exception.UserAlreadyExistsException;
 import com.brokendev.backend.infra.security.TokenService;
+import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
-public class UserService {
+public class    UserService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -39,7 +46,7 @@ public class UserService {
 
     public RegisterResponseDTO register(RegisterRequestDTO request) {
         if(repository.findByEmail(request.email()).isPresent()) {
-            throw new UserAlreadyExistsException("Email already registered");
+            throw new RuntimeException("Email already registered");
         }
         User user = new User();
         user.setEmail(request.email());
@@ -49,6 +56,16 @@ public class UserService {
         user.setTelephone(request.telephone());
         repository.save(user);
 
+        Account account = new Account();
+        account.setUser(user);
+        account.setBalance(BigDecimal.ZERO);
+        account.setAccountNumber(generateAccountNumber());
+        accountRepository.save(account);
+
         return new RegisterResponseDTO(user.getName(), user.getEmail(), "Registrado com sucesso!");
+    }
+
+    private String generateAccountNumber() {
+        return String.valueOf(System.currentTimeMillis());
     }
 }
