@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 
 @Tag(name = "Auth-Info", description = "Endpoint para verificar se o usuário com token válido possui acesso")
 @RestController
@@ -15,9 +17,10 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserController {
 
+
     @Operation(summary = "Verificação", description = "verifica se o usuário tem acesso autorizado")
     @GetMapping
-    public ResponseEntity<String> getUser(){
-        return ResponseEntity.ok("success");
+    public ResponseEntity<Map<String, String>> getUser() {
+        return ResponseEntity.ok(Map.of("message", "success"));
     }
 }

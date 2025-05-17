@@ -33,4 +33,7 @@ public class User{
     @Column(nullable = false, length = 11)
     private String telephone;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Account account;
+
 }
