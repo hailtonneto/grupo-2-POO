@@ -33,6 +33,10 @@ export default function HomeScreen() {
     console.log("Redirecionando para Cartoes...");
     navigation.navigate("Cards");
   };
+  const handleRecharge = () => {
+    console.log("Redirecionando para Recargas...");
+    navigation.navigate("Recharge");
+  };
   const [fontsLoaded] = useFonts({
       "Kadwa-Regular": Kadwa_400Regular,
       "Kadwa-Bold": Kadwa_700Bold,
@@ -117,7 +121,7 @@ export default function HomeScreen() {
         <View style={styles.quickActions}>
           <QuickAction icon={require('../assets/invest.png')} label="Invest" />
           <QuickAction icon={require('../assets/loan (2).png')} label="Emprest" />
-          <QuickAction icon={require('../assets/phone.png')} label="Recargas" />
+          <QuickAction icon={require('../assets/phone.png')} label="Recargas" onPress={handleRecharge}/>
           <QuickAction icon={require('../assets/gas-station.png')} label="Shell Box" />
           <QuickAction icon={require('../assets/piggy-bank.png')} label="Meu Porquinho" />
         </View>
@@ -145,9 +149,9 @@ function ActionButton({ label, icon, onPress }) {
   )
 }
 
-function QuickAction({ icon, label }) {
+function QuickAction({ icon, label, onPress}) {
   return (
-    <TouchableOpacity style={styles.quickAction}>
+    <TouchableOpacity style={styles.quickAction} onPress={onPress}>
       <View style={styles.quickActionIcon}>
         <Image source={icon} style={styles.quickIconImage} />
       </View>

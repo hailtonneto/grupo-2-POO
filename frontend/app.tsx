@@ -8,6 +8,7 @@ import HomeScreen from "./screens/HomeScreen"
 import PixScreen from "./screens/PixScreen"
 import PaymentScreen from "./screens/PaymentScreen"
 import CardsScreen from "./screens/CardsScreen"
+import RechargeScreen from "./screens/RechargeScreen"
 
 const Stack = createStackNavigator()
 
@@ -22,6 +23,7 @@ export default function App() {
         <Stack.Screen name="Pix" component={PixScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Payment" component={PaymentScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Cards" component={CardsScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Recharge" component={RechargeScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
