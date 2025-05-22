@@ -1,6 +1,6 @@
 import React from "react";
 import { View, ScrollView } from "react-native";
-import HeaderPix from "../components/Header";
+import Header from "../components/Header";
 import PixMainActions from "../components/MainActions";
 import PixFeatureGrid from "../components/FeatureGrid";
 
@@ -38,7 +38,7 @@ export default function PixScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
-      <HeaderPix />
+      <Header />
       <ScrollView style={{ paddingHorizontal: 16 }}>
         <PixMainActions actions={actions} />
         <PixFeatureGrid features={features} />

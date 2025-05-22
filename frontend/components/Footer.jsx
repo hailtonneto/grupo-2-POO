@@ -1,4 +1,4 @@
-import { Pressable, View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import { Pressable, View, Text, StyleSheet } from "react-native"
 
 export default function Footer({ navigation, style }) {
   return (

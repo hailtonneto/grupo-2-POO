@@ -29,7 +29,10 @@ export default function HomeScreen() {
     console.log("Redirecionando para Pagamentos...");
     navigation.navigate("Payment");
   };
-
+  const handleCards = () => {
+    console.log("Redirecionando para Cartoes...");
+    navigation.navigate("Cards");
+  };
   const [fontsLoaded] = useFonts({
       "Kadwa-Regular": Kadwa_400Regular,
       "Kadwa-Bold": Kadwa_700Bold,
@@ -89,21 +92,25 @@ export default function HomeScreen() {
           </View>
 
           <View style={styles.actionButtons}>
-            <TouchableOpacity onPress={handlePix}>
+            <TouchableOpacity>
             <ActionButton
               label="Pix"
               icon={require('../assets/pix.png')}
               onPress={handlePix}
             />
             </TouchableOpacity>
-            <TouchableOpacity onPress={handlePix}>
+            <TouchableOpacity>
             <ActionButton
               label="Pagar"
               icon={require('../assets/barcode.png')}
               onPress={handlePayment}
             />
             </TouchableOpacity>
-            <ActionButton label="Cartões" icon={require('../assets/cards.png')} />
+            <ActionButton 
+            label="Cartões" 
+            icon={require('../assets/cards.png')} 
+            onPress={handleCards}
+            />
           </View>
         </View>
 

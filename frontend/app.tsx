@@ -7,7 +7,7 @@ import SignUpScreen from "./screens/SignUpScreen"
 import HomeScreen from "./screens/HomeScreen"
 import PixScreen from "./screens/PixScreen"
 import PaymentScreen from "./screens/PaymentScreen"
-
+import CardsScreen from "./screens/CardsScreen"
 
 const Stack = createStackNavigator()
 
@@ -21,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Pix" component={PixScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Payment" component={PaymentScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Cards" component={CardsScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
