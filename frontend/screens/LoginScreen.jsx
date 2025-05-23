@@ -9,11 +9,13 @@ import {
   Keyboard,
   ActivityIndicator,
   TouchableWithoutFeedback,
+  Alert,
 } from "react-native"
 import InputField from "../components/Input"
 import Button from "../components/Button"
 import Logo from "../components/logo"
 import Footer from "../components/Footer"
+import { login, saveToken } from "../src/services/src/services/authService";
 
 export default function LoginScreen() {
   const navigation = useNavigation(); 
@@ -22,6 +24,7 @@ export default function LoginScreen() {
     login: "",
     senha: "",
   })
+  const [loading, setLoading] = useState(false);
 
   const [fontsLoaded] = useFonts({
     InterRegular: Inter_400Regular,
@@ -36,10 +39,45 @@ export default function LoginScreen() {
     )
   }
 
-  const handleLogin = () => {
-    console.log("Login attempt with:", credentials)
-    navigation.navigate("Home") 
-  }
+  const handleLogin = async () => {
+    if (!credentials.login || !credentials.senha) {
+      Alert.alert("Erro", "Por favor, preencha todos os campos");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      
+  
+      const response = await login({ 
+        cpf: credentials.login, 
+        password: credentials.senha 
+      });
+      
+      await saveToken(response.token);
+      
+      console.log("Login bem-sucedido:", response);
+      
+      navigation.navigate("Home"); 
+      
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      
+      if (error.response) {
+        if (error.response.status === 401) {
+          Alert.alert("Erro", "CPF ou senha incorretos");
+        } else {
+          Alert.alert("Erro", `Ocorreu um erro ao fazer login: ${error.response.status}`);
+        }
+      } else if (error.request) {
+        Alert.alert("Erro", "Não foi possível conectar ao servidor. Verifique sua conexão.");
+      } else {
+        Alert.alert("Erro", "Ocorreu um erro ao processar sua solicitação");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -60,7 +98,11 @@ export default function LoginScreen() {
                 onChangeText={(text) => setCredentials({ ...credentials, senha: text })}
                 secureTextEntry
               />
-              <Button title="Entrar" onPress={handleLogin} />
+              <Button 
+                title={loading ? "Carregando..." : "Entrar"} 
+                onPress={handleLogin} 
+                disabled={loading}
+              />
             </View>
           </View>
         </ScrollView>
