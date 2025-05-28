@@ -1,8 +1,9 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "jsx":"preserve",
+    "jsx": "preserve",
     "strict": true,
     "noImplicitAny": false,
+    "types": ["react", "react-native", "expo", "expo-status-bar"]
   }
 }

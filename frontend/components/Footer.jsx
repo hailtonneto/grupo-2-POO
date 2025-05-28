@@ -1,9 +1,9 @@
-import { Pressable, View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import { Pressable, View, Text, StyleSheet } from "react-native"
 
 export default function Footer({ navigation, style }) {
   return (
     <View style={[styles.footer, style]}>
-      <Pressable onPress={() => navigation.navigate("SignUp")}>
+      <Pressable onPress={() => navigation.navigate("Home")}>
         <Text style={styles.text}>
           Trocar ou abrir conta
         </Text>
@@ -14,7 +14,7 @@ export default function Footer({ navigation, style }) {
 
 const styles = StyleSheet.create({
   footer: {
-    marginBottom:40,
+    marginBottom:60,
     marginLeft:210,
     alignItems: "center",
     backgroundColor: "white",

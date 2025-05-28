@@ -15,7 +15,7 @@ import InputField from "../components/Input"
 import Button from "../components/Button"
 import Logo from "../components/logo"
 import Footer from "../components/Footer"
-import { login, saveToken } from "../src/services/authService";
+import { login, saveToken } from "../src/services/src/services/authService";
 
 export default function LoginScreen() {
   const navigation = useNavigation(); 
@@ -58,7 +58,7 @@ export default function LoginScreen() {
       
       console.log("Login bem-sucedido:", response);
       
-      navigation.navigate("SecureLogin"); 
+      navigation.navigate("Home"); 
       
     } catch (error) {
       console.error("Erro ao fazer login:", error);
@@ -84,7 +84,7 @@ export default function LoginScreen() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView keyboardShouldPersistTaps="handled">
           <View style={styles.content}>
-            <Image source={require("../assets/help.png")} style={styles.image} />
+            <Image source={require("../assets/login/help.png")} style={styles.image} />
             <Logo />
             <View style={styles.formContainer}>
               <InputField

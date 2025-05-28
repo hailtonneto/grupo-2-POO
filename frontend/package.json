@@ -12,21 +12,28 @@
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo-google-fonts/kadwa": "^0.3.0",
-    "@react-native-async-storage/async-storage": "^2.1.2",
-    "@react-navigation/native": "^7.1.0",
-    "@react-navigation/stack": "^7.2.4",
+    "@react-native-async-storage/async-storage": "2.1.2",
+    "@react-native-picker/picker": "2.11.0",
+    "@react-navigation/native": "^7.1.9",
+    "@react-navigation/stack": "^7.3.2",
     "axios": "^1.9.0",
-    "expo": "^52.0.46",
-    "expo-font": "~13.0.4",
-    "expo-status-bar": "~2.0.1",
+    "expo": "^53.0.0",
+    "expo-font": "~13.3.1",
+    "expo-status-bar": "~2.2.3",
     "lucide-react-native": "^0.487.0",
-    "react": "18.3.1",
-    "react-native": "^0.76.9"
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-gesture-handler": "^2.25.0",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-svg": "^15.11.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@types/react": "~18.3.12",
-    "typescript": "^5.3.3"
+    "@babel/core": "^7.26.0",
+    "@types/react": "~19.0.10",
+    "typescript": "~5.8.3"
   },
-  "private": true
+  "private": true,
+  "description": "Comandos para rodar o react native:",
+  "keywords": [],
+  "author": ""
 }
