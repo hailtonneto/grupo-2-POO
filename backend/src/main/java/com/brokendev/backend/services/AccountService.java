@@ -35,6 +35,9 @@ public class AccountService {
     @Autowired
     private BoletoPaymentRepository boletoPaymentRepository;
 
+    @Autowired
+    private NotificationService notificationService;
+
     public AccountBalanceResponseDTO getBalance(String email){
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
@@ -51,6 +54,14 @@ public class AccountService {
 
         account.setBalance(account.getBalance().add(amount));
         accountRepository.save(account);
+
+        // Notificação
+        User user = account.getUser();
+        notificationService.notify(
+                user,
+                "Depósito realizado",
+                "Você recebeu um depósito de R$ " + amount
+        );
 
         return new AccountDepositResponseDTO(account.getBalance(), "Depósito realizado com sucesso!");
 
@@ -93,8 +104,19 @@ public class AccountService {
         transaction.setDescription("Transferência PIX realizada com sucesso!");
         transaction.setPixKeyType(request.pixKeyType());
         transaction.setPixKey(request.pixKey());
-
         pixTransactionRepository.save(transaction);
+
+        // Notificações
+        notificationService.notify(
+                sender.getUser(),
+                "PIX enviado",
+                "Você enviou um PIX de R$ " + request.amount() + " para " + receiver.getUser().getEmail()
+        );
+        notificationService.notify(
+                receiver.getUser(),
+                "PIX recebido",
+                "Você recebeu um PIX de R$ " + request.amount() + " de " + sender.getUser().getEmail()
+        );
 
         return new PixTransferResponseDTO(
                 sender.getUser().getEmail(),
@@ -127,6 +149,13 @@ public class AccountService {
         boleto.setStatus(BoletoPaymentStatus.PAID);
         boleto.setDescription("Pagamento de boleto realizado com sucesso!");
         boletoPaymentRepository.save(boleto);
+
+        // Notificação
+        notificationService.notify(
+                payer.getUser(),
+                "Boleto pago",
+                "Você pagou um boleto de R$ " + request.amount() + " (código: " + request.barcode() + ")"
+        );
 
         return new BoletoPaymentResponseDTO(
                 boleto.getBarcode(),
