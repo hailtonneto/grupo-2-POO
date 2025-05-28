@@ -2,9 +2,7 @@ package com.brokendev.backend.controllers;
 
 
 import com.brokendev.backend.domain.User;
-import com.brokendev.backend.dto.AccountBalanceResponseDTO;
-import com.brokendev.backend.dto.AccountDepositRequestDTO;
-import com.brokendev.backend.dto.AccountDepositResponseDTO;
+import com.brokendev.backend.dto.*;
 import com.brokendev.backend.services.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -32,5 +30,13 @@ public class AccountController {
     public ResponseEntity<AccountDepositResponseDTO>deposit(@AuthenticationPrincipal User user, @RequestBody @Valid AccountDepositRequestDTO requestDTO) {
         AccountDepositResponseDTO responseDTO = accountService.deposit(user.getEmail(), requestDTO.amount());
         return ResponseEntity.ok(responseDTO);
+    }
+
+    @PostMapping("/pix/transfer")
+    public ResponseEntity<PixTransferResponseDTO> transferPix(
+            @AuthenticationPrincipal User user,
+            @RequestBody @Valid PixTransferRequestDTO request) {
+        PixTransferResponseDTO response = accountService.transferPix(user.getEmail(), request);
+        return ResponseEntity.ok(response);
     }
 }
