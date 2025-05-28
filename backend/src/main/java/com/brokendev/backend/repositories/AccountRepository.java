@@ -10,4 +10,6 @@ public interface AccountRepository extends JpaRepository<Account, String>{
 
     Optional<Account>findByUser(User user);
     Optional<Account>findByUserEmail(String email);
+    Optional<Account> findByUserCpf(String cpf);
+    Optional<Account> findByUserTelephone(String telephone);
 }
