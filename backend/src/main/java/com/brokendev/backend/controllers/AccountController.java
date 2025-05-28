@@ -32,6 +32,7 @@ public class AccountController {
         return ResponseEntity.ok(responseDTO);
     }
 
+    @Operation(summary = "transferência pix", description = "realiza a transferência pix para outra conta")
     @PostMapping("/pix/transfer")
     public ResponseEntity<PixTransferResponseDTO> transferPix(
             @AuthenticationPrincipal User user,
