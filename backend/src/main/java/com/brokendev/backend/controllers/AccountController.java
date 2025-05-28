@@ -32,11 +32,21 @@ public class AccountController {
         return ResponseEntity.ok(responseDTO);
     }
 
+    @Operation(summary = "transferência pix", description = "realiza a transferência pix para outra conta")
     @PostMapping("/pix/transfer")
     public ResponseEntity<PixTransferResponseDTO> transferPix(
             @AuthenticationPrincipal User user,
             @RequestBody @Valid PixTransferRequestDTO request) {
         PixTransferResponseDTO response = accountService.transferPix(user.getEmail(), request);
+        return ResponseEntity.ok(response);
+    }
+
+    @Operation(summary = "pagamento de boleto", description = "realiza o pagamento de boleto informado pelo usuário")
+    @PostMapping("/boleto/pay")
+    public ResponseEntity<BoletoPaymentResponseDTO> payBoleto(
+            @AuthenticationPrincipal User user,
+            @RequestBody @Valid BoletoPaymentRequestDTO request) {
+        BoletoPaymentResponseDTO response = accountService.payBoleto(user.getEmail(), request);
         return ResponseEntity.ok(response);
     }
 }
