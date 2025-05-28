@@ -1,29 +1,34 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import PixFeatureIcon from "./FeatureIcon";
 
-export default function PixFeatureGrid({ features }) {
+const screenWidth = Dimensions.get("window").width;
+
+export default function PixFeatureGrid({ features, iconBorderRadius, itemStyle, gridStyle }) {
   return (
-    <View style={styles.grid}>
+    <View style={[styles.grid, gridStyle]}>
       {features.map((feature, index) => (
-        <PixFeatureIcon
-          key={index}
-          label={feature.label}
-          icon={feature.icon}
-          iconSize={feature.iconSize}
-        />
-      
+        <View key={index} style={[styles.gridItem, itemStyle]}>
+          <PixFeatureIcon
+            label={feature.label}
+            icon={feature.icon}
+            iconSize={feature.iconSize}
+            borderRadius={iconBorderRadius}
+          />
+        </View>
       ))}
     </View>
   );
 }
 
+
 const styles = StyleSheet.create({
   grid: {
     flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 12,
-    justifyContent: "space-between",
-    marginBottom: 20,
+    flexWrap: "nowrap",
+  },
+  gridItem: {
+    alignItems: "center",
+    marginVertical: 10,
   },
 });

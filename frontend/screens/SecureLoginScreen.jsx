@@ -54,7 +54,7 @@ export default function SecureLoginScreen() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView keyboardShouldPersistTaps="handled">
           <View style={styles.content}>
-            <Image source={require("../assets/help.png")} style={styles.image} />
+            <Image source={require("../assets/login/help.png")} style={styles.image} />
             <Logo />
             <View style={styles.formContainer}>
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
@@ -78,7 +78,7 @@ export default function SecureLoginScreen() {
 
       <View style={styles.footerContainer}>
         <TouchableOpacity onPress={() => setShowFaceId(true)} style={styles.faceIdWrapper}>
-            <Image source={require("../assets/face-id-blue.png")} style={styles.faceIdIcon} />
+            <Image source={require("../assets/secureLogin/face-id-blue.png")} style={styles.faceIdIcon} />
         </TouchableOpacity>
 
         <View style={styles.accountWrapper}>
@@ -99,7 +99,7 @@ export default function SecureLoginScreen() {
         >
         <View style={styles.modalOverlay}>
             <Image
-            source={require("../assets/face-id-white.png")}
+            source={require("../assets/secureLogin/face-id-white.png")}
             style={styles.faceIdFeedback}
             />
         </View>

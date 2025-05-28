@@ -9,7 +9,7 @@ const CardsScreen = () => {
       <Header
         title="Cartões"
         gap = {130}
-        rightIconSource={require("../assets/settings.png")}
+        rightIconSource={require("../assets/cards/settings.png")}
         rightIconStyle={{ marginLeft: 120}} 
         onRightIconPress={() => console.log("Abrindo configurações...")}
       />

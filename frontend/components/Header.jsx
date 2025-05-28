@@ -6,15 +6,17 @@ import { useNavigation } from "@react-navigation/native";
 export default function Header({
   title = "Pix",
   gap = 150,
+  middleIconSource = null,
+  onMiddleIconPress = null,
+  middleIconStyle={},
   rightIconSource = null,
   onRightIconPress = null,
   rightIconStyle = {}, 
-  middleIconSource = null,
-  onMiddleIconPress = null,
 }) {
   const navigation = useNavigation();
 
   const handleGoBack = () => {
+    console.log("Voltando...");
     navigation.goBack();
   };
 
@@ -29,7 +31,7 @@ export default function Header({
 
         {middleIconSource && (
           <TouchableOpacity onPress={onMiddleIconPress}>
-            <Image source={middleIconSource} style={styles.middleIcon} />
+            <Image source={middleIconSource} style={[styles.middleIcon, middleIconStyle]}/>
           </TouchableOpacity>
         )}
 

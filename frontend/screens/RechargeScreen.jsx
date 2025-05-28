@@ -7,10 +7,10 @@ const RechargeScreen = () => {
   return (
     <View style={styles.container}>
       <Header 
-        title="Recarga"
-        gap = {132}
-        rightIconSource={require("../assets/menu.png")}
-        rightIconStyle={{ marginLeft: 115, width:20, height:20,}} 
+        title="Recarga de Celular"
+        gap = {92}
+        rightIconSource={require("../assets/recharge/menu.png")}
+        rightIconStyle={{ marginLeft: 60, width:20, height:20,}} 
         onRightIconPress={() => console.log("Abrindo configurações de recarga...")}
       />
       <Recarga/>

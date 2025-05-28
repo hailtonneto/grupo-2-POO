@@ -37,6 +37,10 @@ export default function HomeScreen() {
     console.log("Redirecionando para Recargas...");
     navigation.navigate("Recharge");
   };
+  const handleInvest = () => {
+    console.log("Redirecionando para Investimentos...");
+    navigation.navigate("Invest");
+  };
   const [fontsLoaded] = useFonts({
       "Kadwa-Regular": Kadwa_400Regular,
       "Kadwa-Bold": Kadwa_700Bold,
@@ -59,17 +63,17 @@ export default function HomeScreen() {
               <Image
                 source={
                   isBalanceVisible
-                    ? require('../assets/blocked-eye.png')
-                    : require('../assets/eye.png')
+                    ? require('../assets/home/blocked-eye.png')
+                    : require('../assets/home/eye.png')
                 }
                 style={styles.icon}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setSearching(true)}>
-              <Image source={require('../assets/search.png')} style={styles.icon} />
+              <Image source={require('../assets/home/search.png')} style={styles.icon} />
             </TouchableOpacity>
             <View style={styles.avatar}>
-              <Image source={require('../assets/profile.png')} style={styles.avatarIcon}/>
+              <Image source={require('../assets/home/profile.png')} style={styles.avatarIcon}/>
             </View>
           </View>
         ) : (
@@ -99,42 +103,42 @@ export default function HomeScreen() {
             <TouchableOpacity>
             <ActionButton
               label="Pix"
-              icon={require('../assets/pix.png')}
+              icon={require('../assets/home/pix.png')}
               onPress={handlePix}
             />
             </TouchableOpacity>
             <TouchableOpacity>
             <ActionButton
               label="Pagar"
-              icon={require('../assets/barcode.png')}
+              icon={require('../assets/home/barcode.png')}
               onPress={handlePayment}
             />
             </TouchableOpacity>
             <ActionButton 
             label="Cartões" 
-            icon={require('../assets/cards.png')} 
+            icon={require('../assets/home/cards.png')} 
             onPress={handleCards}
             />
           </View>
         </View>
 
         <View style={styles.quickActions}>
-          <QuickAction icon={require('../assets/invest.png')} label="Invest" />
-          <QuickAction icon={require('../assets/loan (2).png')} label="Emprest" />
-          <QuickAction icon={require('../assets/phone.png')} label="Recargas" onPress={handleRecharge}/>
-          <QuickAction icon={require('../assets/gas-station.png')} label="Shell Box" />
-          <QuickAction icon={require('../assets/piggy-bank.png')} label="Meu Porquinho" />
+          <QuickAction icon={require('../assets/home/invest.png')} label="Invest" onPress={handleInvest}/>
+          <QuickAction icon={require('../assets/home/loan (2).png')} label="Emprest" />
+          <QuickAction icon={require('../assets/home/phone.png')} label="Recargas" onPress={handleRecharge}/>
+          <QuickAction icon={require('../assets/home/gas-station.png')} label="Shell Box" />
+          <QuickAction icon={require('../assets/home/piggy-bank.png')} label="Meu Porquinho" />
         </View>
       </ScrollView>
 
       <View style={styles.bottomNav}>
-        <NavButton icon={<Image source={require('../assets/home.png')} style={styles.navIcon} />} label="Início" />
-        <NavButton icon={<Image source={require('../assets/invest.png')} style={styles.navIcon} />} label="Invest" />
+        <NavButton icon={<Image source={require('../assets/home/home.png')} style={styles.navIcon} />} label="Início" />
+        <NavButton icon={<Image source={require('../assets/home/invest.png')} style={styles.navIcon} onPress={handleInvest}/>} label="Invest" />
         <TouchableOpacity style={styles.navButtonMiddle}>
           <Text style={styles.navLabelMiddle}>Cb</Text>
         </TouchableOpacity>
-        <NavButton icon={<Image source={require('../assets/travel.png')} style={styles.navIcon} />} label="Viagens" />
-        <NavButton icon={<Image source={require('../assets/more.png')} style={styles.navIcon} />} label="Todos" />
+        <NavButton icon={<Image source={require('../assets/home/travel.png')} style={styles.navIcon} />} label="Viagens" />
+        <NavButton icon={<Image source={require('../assets/home/more.png')} style={styles.navIcon} />} label="Todos" />
       </View>
     </View>
   )
@@ -160,9 +164,9 @@ function QuickAction({ icon, label, onPress}) {
   )
 }
 
-function NavButton({ icon, label }) {
+function NavButton({ icon, label, onPress }) {
   return (
-    <TouchableOpacity style={styles.navButton}>
+    <TouchableOpacity style={styles.navButton} onPress={onPress}>
       {icon}
       <Text style={styles.navLabel}>{label}</Text>
     </TouchableOpacity>

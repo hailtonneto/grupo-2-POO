@@ -84,7 +84,7 @@ export default function LoginScreen() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView keyboardShouldPersistTaps="handled">
           <View style={styles.content}>
-            <Image source={require("../assets/help.png")} style={styles.image} />
+            <Image source={require("../assets/login/help.png")} style={styles.image} />
             <Logo />
             <View style={styles.formContainer}>
               <InputField

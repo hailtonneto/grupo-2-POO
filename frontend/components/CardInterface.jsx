@@ -46,7 +46,7 @@ const CardInterface = () => {
         <View style={[styles.card, { backgroundColor: card.color }]}>
           <View style={styles.cardHeader}>
             <Image
-              source={require("../assets/settings.png")}
+              source={require("../assets/cards/settings.png")}
               style={styles.settingsIcon}
             />
           </View>
@@ -72,7 +72,7 @@ const CardInterface = () => {
           <View style={styles.cardHeader}>
             <Text style={styles.virtualLabel}>VIRTUAL</Text>
             <Image
-              source={require("../assets/qrcode.png")}
+              source={require("../assets/cards/qrcode.png")}
               style={styles.qrIcon}
             />
           </View>
