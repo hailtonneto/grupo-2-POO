@@ -1,13 +1,13 @@
 package com.brokendev.backend.dto;
 
-import com.brokendev.backend.enums.InvestimentType;
+import com.brokendev.backend.enums.InvestmentType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public record InvestmentResponseDTO(
         Long id,
-        InvestimentType type,
+        InvestmentType type,
         BigDecimal amount,
         LocalDateTime investmentDate,
         BigDecimal expectedReturn,

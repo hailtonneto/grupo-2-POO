@@ -1,6 +1,6 @@
 package com.brokendev.backend.domain;
 
-import com.brokendev.backend.enums.InvestimentType;
+import com.brokendev.backend.enums.InvestmentType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Investiment {
+public class Investment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Investiment {
     private Account investor;
 
     @Enumerated(EnumType.STRING)
-    private InvestimentType type;
+    private InvestmentType type;
 
     private BigDecimal amount;
 
