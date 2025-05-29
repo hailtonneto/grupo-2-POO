@@ -2,8 +2,8 @@ package com.brokendev.backend.services;
 
 import com.brokendev.backend.domain.Account;
 import com.brokendev.backend.domain.Investment;
-import com.brokendev.backend.dto.InvestmentRequestDTO;
-import com.brokendev.backend.dto.InvestmentResponseDTO;
+import com.brokendev.backend.dto.investment.InvestmentRequestDTO;
+import com.brokendev.backend.dto.investment.InvestmentResponseDTO;
 import com.brokendev.backend.enums.InvestmentType;
 import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.InvestmentRepository;

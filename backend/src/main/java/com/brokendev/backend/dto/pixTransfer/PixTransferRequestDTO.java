@@ -1,4 +1,4 @@
-package com.brokendev.backend.dto;
+package com.brokendev.backend.dto.pixTransfer;
 
 import com.brokendev.backend.enums.PixKeyType;
 import jakarta.validation.constraints.DecimalMin;

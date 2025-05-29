@@ -1,4 +1,4 @@
-package com.brokendev.backend.dto;
+package com.brokendev.backend.dto.investment;
 
 import com.brokendev.backend.enums.InvestmentType;
 
