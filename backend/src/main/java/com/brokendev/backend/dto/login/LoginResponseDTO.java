@@ -1,4 +1,4 @@
-package com.brokendev.backend.dto;
+package com.brokendev.backend.dto.login;
 
 public record LoginResponseDTO(
         String name,

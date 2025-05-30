@@ -1,4 +1,4 @@
-package com.brokendev.backend.dto;
+package com.brokendev.backend.dto.boleto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

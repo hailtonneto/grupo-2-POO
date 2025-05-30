@@ -1,8 +1,8 @@
 package com.brokendev.backend.controllers;
 
 import com.brokendev.backend.domain.User;
-import com.brokendev.backend.dto.InvestmentRequestDTO;
-import com.brokendev.backend.dto.InvestmentResponseDTO;
+import com.brokendev.backend.dto.investment.InvestmentRequestDTO;
+import com.brokendev.backend.dto.investment.InvestmentResponseDTO;
 import com.brokendev.backend.services.InvestmentService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +28,7 @@ public class InvestmentController {
     public ResponseEntity<InvestmentResponseDTO> invest(
             @AuthenticationPrincipal User user,
             @RequestBody InvestmentRequestDTO request) {
+        System.out.println("User no controller: " + user);
         return ResponseEntity.ok(investmentService.invest(user.getEmail(), request));
     }
 

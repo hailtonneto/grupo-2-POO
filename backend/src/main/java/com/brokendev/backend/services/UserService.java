@@ -2,11 +2,10 @@ package com.brokendev.backend.services;
 
 import com.brokendev.backend.domain.Account;
 import com.brokendev.backend.domain.User;
-import com.brokendev.backend.dto.LoginRequestDTO;
-import com.brokendev.backend.dto.LoginResponseDTO;
-import com.brokendev.backend.dto.RegisterRequestDTO;
-import com.brokendev.backend.dto.RegisterResponseDTO;
-import com.brokendev.backend.exception.UserAlreadyExistsException;
+import com.brokendev.backend.dto.login.LoginRequestDTO;
+import com.brokendev.backend.dto.login.LoginResponseDTO;
+import com.brokendev.backend.dto.register.RegisterRequestDTO;
+import com.brokendev.backend.dto.register.RegisterResponseDTO;
 import com.brokendev.backend.infra.security.TokenService;
 import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.UserRepository;
