@@ -1,8 +1,9 @@
-import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
-import PixFeatureIcon from "./FeatureIcon";
+"use client"
 
-const screenWidth = Dimensions.get("window").width;
+import { View, StyleSheet, Dimensions } from "react-native"
+import PixFeatureIcon from "./FeatureIcon"
+
+const screenWidth = Dimensions.get("window").width
 
 export default function PixFeatureGrid({ features, iconBorderRadius, itemStyle, gridStyle }) {
   return (
@@ -14,13 +15,13 @@ export default function PixFeatureGrid({ features, iconBorderRadius, itemStyle, 
             icon={feature.icon}
             iconSize={feature.iconSize}
             borderRadius={iconBorderRadius}
+            onPress={feature.onPress}
           />
         </View>
       ))}
     </View>
-  );
+  )
 }
-
 
 const styles = StyleSheet.create({
   grid: {
@@ -31,4 +32,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 10,
   },
-});
+})

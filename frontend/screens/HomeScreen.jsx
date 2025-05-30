@@ -11,15 +11,25 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../components/logo"
 import { useFonts, Kadwa_400Regular, Kadwa_700Bold } from "@expo-google-fonts/kadwa";
-import {
-  ChevronRight
-} from 'lucide-react-native'
+import { ChevronRight } from 'lucide-react-native'
+import { useAuth } from '../src/hooks/useAuth';
+import { useAccounts } from '../src/hooks/useAccounts';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
   const [isBalanceVisible, setBalanceVisible] = React.useState(false)
   const [isSearching, setSearching] = React.useState(false)
   const [searchText, setSearchText] = React.useState('')
+
+  const { user } = useAuth();
+  const { accounts, loading, refreshAccounts } = useAccounts();
+
+  React.useEffect(() => {
+    refreshAccounts();
+  }, []);
+
+  const balance = accounts[0]?.balance || 0;
+  const userName = user?.name || 'Usuário';
 
   const handlePix = () => {
     console.log("Redirecionando para Pix...");
@@ -94,7 +104,12 @@ export default function HomeScreen() {
         <View style={styles.balanceCard}>
           <View style={styles.balanceTop}>
             <Text style={styles.balanceText}>
-              {isBalanceVisible ? 'R$ 0,00' : 'R$ ••••'}
+              {loading 
+                ? 'Carregando...' 
+                : isBalanceVisible 
+                  ? `R$ ${balance.toFixed(2).replace('.', ',')}` 
+                  : 'R$ ••••'
+              }
             </Text>
             <ChevronRight color="#fff" size={24} />
           </View>

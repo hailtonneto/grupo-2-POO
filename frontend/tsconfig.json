@@ -1,9 +1,16 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "jsx": "preserve",
-    "strict": true,
-    "noImplicitAny": false,
-    "types": ["react", "react-native", "expo", "expo-status-bar"]
+    "target": "es2017",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false
   }
 }
