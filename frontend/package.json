@@ -30,7 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@types/react": "~19.0.10",
-    "typescript": "~5.8.3"
+    "typescript": "^5.8.3"
   },
   "private": true,
   "description": "Comandos para rodar o react native:",
