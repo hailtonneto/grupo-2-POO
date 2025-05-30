@@ -6,16 +6,15 @@ import com.brokendev.backend.domain.PixTransaction;
 import com.brokendev.backend.domain.User;
 import com.brokendev.backend.dto.account.AccountBalanceResponseDTO;
 import com.brokendev.backend.dto.account.AccountDepositResponseDTO;
+import com.brokendev.backend.dto.account.TransactionStatementResponseDTO;
 import com.brokendev.backend.dto.boleto.BoletoPaymentRequestDTO;
 import com.brokendev.backend.dto.boleto.BoletoPaymentResponseDTO;
 import com.brokendev.backend.dto.pixTransfer.PixTransferRequestDTO;
 import com.brokendev.backend.dto.pixTransfer.PixTransferResponseDTO;
 import com.brokendev.backend.enums.BoletoPaymentStatus;
 import com.brokendev.backend.enums.PixTransactionStatus;
-import com.brokendev.backend.repositories.AccountRepository;
-import com.brokendev.backend.repositories.BoletoPaymentRepository;
-import com.brokendev.backend.repositories.PixTransactionRepository;
-import com.brokendev.backend.repositories.UserRepository;
+import com.brokendev.backend.enums.TransactionType;
+import com.brokendev.backend.repositories.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,6 +22,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 
 @Service
@@ -42,6 +44,9 @@ public class AccountService {
 
     @Autowired
     private NotificationService notificationService;
+
+    @Autowired
+    private InvestmentRepository investmentRepository;
 
     public AccountBalanceResponseDTO getBalance(String email){
         User user = userRepository.findByEmail(email)
@@ -170,4 +175,58 @@ public class AccountService {
                 boleto.getDescription()
         );
     }
+
+    public List<TransactionStatementResponseDTO> getStatement(String email) {
+        Account account = accountRepository.findByUserEmail(email)
+                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+
+        List<TransactionStatementResponseDTO> transactions = new ArrayList<>();
+
+        // PIX enviados
+        pixTransactionRepository.findAll().stream()
+                .filter(pix -> pix.getSender().getId().equals(account.getId()))
+                .forEach(pix -> transactions.add(new TransactionStatementResponseDTO(
+                        TransactionType.PIX_SENT,
+                        pix.getAmount(),
+                        pix.getTimestamp(),
+                        "PIX enviado para " + pix.getReceiver().getUser().getEmail()
+                )));
+
+        // PIX recebidos
+        pixTransactionRepository.findAll().stream()
+                .filter(pix -> pix.getReceiver().getId().equals(account.getId()))
+                .forEach(pix -> transactions.add(new TransactionStatementResponseDTO(
+                        TransactionType.PIX_RECEIVED,
+                        pix.getAmount(),
+                        pix.getTimestamp(),
+                        "PIX recebido de " + pix.getSender().getUser().getEmail()
+                )));
+
+        // Pagamentos de boleto
+        boletoPaymentRepository.findAll().stream()
+                .filter(boleto -> boleto.getPayer().getId().equals(account.getId()))
+                .forEach(boleto -> transactions.add(new TransactionStatementResponseDTO(
+                        TransactionType.BOLETO_PAYMENT,
+                        boleto.getAmount(),
+                        boleto.getPaymentDate(),
+                        "Pagamento de boleto"
+                )));
+
+        // Investimentos
+        investmentRepository.findByInvestor(account).forEach(investment ->
+                transactions.add(new TransactionStatementResponseDTO(
+                        TransactionType.INVESTMENT,
+                        investment.getAmount(),
+                        investment.getInvestmentDate(),
+                        "Investimento em " + investment.getType()
+                ))
+        );
+
+        // Ordena por data decrescente (mais recente primeiro)
+        transactions.sort(Comparator.comparing(TransactionStatementResponseDTO::date).reversed());
+
+        return transactions;
+    }
+
+
 }
