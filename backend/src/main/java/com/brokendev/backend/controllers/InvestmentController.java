@@ -28,6 +28,7 @@ public class InvestmentController {
     public ResponseEntity<InvestmentResponseDTO> invest(
             @AuthenticationPrincipal User user,
             @RequestBody InvestmentRequestDTO request) {
+        System.out.println("User no controller: " + user);
         return ResponseEntity.ok(investmentService.invest(user.getEmail(), request));
     }
 

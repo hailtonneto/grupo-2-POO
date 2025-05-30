@@ -28,7 +28,7 @@ public class InvestmentService {
     public InvestmentResponseDTO invest(String userEmail, InvestmentRequestDTO request) {
         Account investor = accountRepository.findByUserEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
-        if(investor.getBalance().compareTo(request.amount()) > 0){
+        if(investor.getBalance().compareTo(request.amount()) < 0){
             throw new RuntimeException("Saldo insuficiente para investir");
         }
 
