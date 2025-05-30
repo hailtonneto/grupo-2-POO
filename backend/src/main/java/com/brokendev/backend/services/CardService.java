@@ -15,6 +15,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
+import static com.brokendev.backend.utils.CardUtils.maskCardNumber;
+
 @Service
 @RequiredArgsConstructor
 public class CardService {
@@ -76,10 +78,6 @@ public class CardService {
             sb.append(rand.nextInt(10));
         }
         return sb.toString();
-    }
-
-    private String maskCardNumber(String cardNumber) {
-        return "**** **** **** " + cardNumber.substring(12);
     }
 
     private String generateExpiration() {
