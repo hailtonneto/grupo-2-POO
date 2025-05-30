@@ -5,6 +5,7 @@ import com.brokendev.backend.domain.User;
 import com.brokendev.backend.dto.account.AccountBalanceResponseDTO;
 import com.brokendev.backend.dto.account.AccountDepositRequestDTO;
 import com.brokendev.backend.dto.account.AccountDepositResponseDTO;
+import com.brokendev.backend.dto.account.TransactionStatementResponseDTO;
 import com.brokendev.backend.dto.boleto.BoletoPaymentRequestDTO;
 import com.brokendev.backend.dto.boleto.BoletoPaymentResponseDTO;
 import com.brokendev.backend.dto.pixTransfer.PixTransferRequestDTO;
@@ -16,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/account")
@@ -54,5 +57,14 @@ public class AccountController {
             @RequestBody @Valid BoletoPaymentRequestDTO request) {
         BoletoPaymentResponseDTO response = accountService.payBoleto(user.getEmail(), request);
         return ResponseEntity.ok(response);
+    }
+
+    @Operation(
+            summary = "Extrato da conta",
+            description = "Retorna o extrato/histórico de transações da conta do usuário autenticado."
+    )
+    @GetMapping("/statement")
+    public ResponseEntity<List<TransactionStatementResponseDTO>> getStatement(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(accountService.getStatement(user.getEmail()));
     }
 }
