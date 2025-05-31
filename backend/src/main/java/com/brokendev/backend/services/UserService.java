@@ -7,12 +7,15 @@ import com.brokendev.backend.dto.card.CardResponseDTO;
 import com.brokendev.backend.dto.login.LoginRequestDTO;
 import com.brokendev.backend.dto.login.LoginResponseDTO;
 import com.brokendev.backend.dto.profile.UserProfileResponseDTO;
+import com.brokendev.backend.dto.profile.UserProfileUpdateDTO;
+import com.brokendev.backend.dto.profile.UserProfileUpdateResponseDTO;
 import com.brokendev.backend.dto.register.RegisterRequestDTO;
 import com.brokendev.backend.dto.register.RegisterResponseDTO;
 import com.brokendev.backend.infra.security.TokenService;
 import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.CardRepository;
 import com.brokendev.backend.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+import static com.brokendev.backend.utils.AccountUtils.generateAccountNumber;
 import static com.brokendev.backend.utils.CardUtils.maskCardNumber;
 
 @Service
@@ -42,6 +46,9 @@ public class    UserService {
 
     @Autowired
     private CardService cardService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public LoginResponseDTO login(LoginRequestDTO request) {
         User user = repository.findByEmail(request.email())
@@ -102,7 +109,21 @@ public class    UserService {
         );
     }
 
-    private String generateAccountNumber() {
-        return String.valueOf(System.currentTimeMillis());
+    @Transactional
+    public UserProfileUpdateResponseDTO updateProfile(Long userId, UserProfileUpdateDTO dto) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+
+        if (dto.name() != null) user.setName(dto.name());
+        if (dto.telephone() != null) user.setTelephone(dto.telephone());
+        if (dto.email() != null) user.setEmail(dto.email());
+
+        userRepository.save(user);
+
+        return new UserProfileUpdateResponseDTO(
+                user.getName(),
+                user.getEmail(),
+                user.getTelephone()
+        );
     }
 }
