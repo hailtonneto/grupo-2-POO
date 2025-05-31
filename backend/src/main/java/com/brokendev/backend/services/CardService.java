@@ -3,6 +3,7 @@ package com.brokendev.backend.services;
 
 import com.brokendev.backend.domain.Account;
 import com.brokendev.backend.domain.Card;
+import com.brokendev.backend.dto.card.CardBlockResponseDTO;
 import com.brokendev.backend.dto.card.CardCreateRequestDTO;
 import com.brokendev.backend.dto.card.CardResponseDTO;
 import com.brokendev.backend.repositories.AccountRepository;
@@ -13,9 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Random;
 
-import static com.brokendev.backend.utils.CardUtils.maskCardNumber;
+import static com.brokendev.backend.utils.CardUtils.*;
 
 @Service
 @RequiredArgsConstructor
@@ -70,20 +70,25 @@ public class CardService {
                 .toList();
     }
 
-    // Métodos utilitários para geração e mascaramento
-    private String generateCardNumber() {
-        Random rand = new Random();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 16; i++) {
-            sb.append(rand.nextInt(10));
-        }
-        return sb.toString();
+    @Transactional
+    public CardBlockResponseDTO blockCard(Long cardId) {
+        Card card = cardRepository.findById(cardId)
+                .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
+        card.setBlocked(true);
+        cardRepository.save(card);
+        return new CardBlockResponseDTO(card.getId(), card.isBlocked(), "Cartão bloqueado com sucesso.");
     }
 
-    private String generateExpiration() {
-        LocalDate now = LocalDate.now();
-        int year = now.getYear() + 4;
-        int month = now.getMonthValue();
-        return String.format("%02d/%02d", month, year % 100);
+    @Transactional
+    public CardBlockResponseDTO unblockCard(Long cardId) {
+        Card card = cardRepository.findById(cardId)
+                .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
+        card.setBlocked(false);
+        cardRepository.save(card);
+        return new CardBlockResponseDTO(card.getId(), card.isBlocked(), "Cartão desbloqueado com sucesso.");
     }
+
+
+
+
 }
