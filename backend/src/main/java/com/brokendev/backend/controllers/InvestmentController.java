@@ -5,6 +5,7 @@ import com.brokendev.backend.dto.investment.InvestmentRequestDTO;
 import com.brokendev.backend.dto.investment.InvestmentResponseDTO;
 import com.brokendev.backend.services.InvestmentService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,8 +28,7 @@ public class InvestmentController {
     @PostMapping
     public ResponseEntity<InvestmentResponseDTO> invest(
             @AuthenticationPrincipal User user,
-            @RequestBody InvestmentRequestDTO request) {
-        System.out.println("User no controller: " + user);
+            @RequestBody @Valid InvestmentRequestDTO request) {
         return ResponseEntity.ok(investmentService.invest(user.getEmail(), request));
     }
 

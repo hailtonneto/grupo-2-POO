@@ -11,6 +11,9 @@ import com.brokendev.backend.dto.profile.UserProfileUpdateDTO;
 import com.brokendev.backend.dto.profile.UserProfileUpdateResponseDTO;
 import com.brokendev.backend.dto.register.RegisterRequestDTO;
 import com.brokendev.backend.dto.register.RegisterResponseDTO;
+import com.brokendev.backend.exception.AccountNotFoundException;
+import com.brokendev.backend.exception.InvalidPasswordException;
+import com.brokendev.backend.exception.UserAlreadyExistsException;
 import com.brokendev.backend.infra.security.TokenService;
 import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.CardRepository;
@@ -55,7 +58,7 @@ public class    UserService {
                 .orElseThrow(()-> new UsernameNotFoundException("User not found"));
 
         if(!passwordEncoder.matches(request.password(), user.getPassword())) {
-            throw new IllegalArgumentException("Invalid password");
+            throw new InvalidPasswordException("Invalid password");
         }
 
         String token = tokenService.generateToken(user);
@@ -64,7 +67,7 @@ public class    UserService {
 
     public RegisterResponseDTO register(RegisterRequestDTO request) {
         if(repository.findByEmail(request.email()).isPresent()) {
-            throw new RuntimeException("Email already registered");
+            throw new UserAlreadyExistsException("Email already registered");
         }
         User user = new User();
         user.setEmail(request.email());
@@ -85,7 +88,7 @@ public class    UserService {
 
     public UserProfileResponseDTO getProfile(User user) {
         Account account = accountRepository.findByUserEmail(user.getEmail())
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
 
         var cards = cardRepository.findByAccount(account)
                 .stream()

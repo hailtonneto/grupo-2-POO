@@ -14,6 +14,9 @@ import com.brokendev.backend.dto.pixTransfer.PixTransferResponseDTO;
 import com.brokendev.backend.enums.BoletoPaymentStatus;
 import com.brokendev.backend.enums.PixTransactionStatus;
 import com.brokendev.backend.enums.TransactionType;
+import com.brokendev.backend.exception.AccountNotFoundException;
+import com.brokendev.backend.exception.InsufficientBalanceException;
+import com.brokendev.backend.exception.PixTransferNotAllowedException;
 import com.brokendev.backend.repositories.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,14 +56,14 @@ public class AccountService {
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 
         Account account = accountRepository.findByUser(user)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
 
         return new AccountBalanceResponseDTO(account.getBalance());
     }
 
     public AccountDepositResponseDTO deposit(String email, BigDecimal amount){
         Account account = accountRepository.findByUserEmail(email)
-                .orElseThrow(() -> new RuntimeException("Conta com email fornecido não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta com email fornecido não encontrada"));
 
         account.setBalance(account.getBalance().add(amount));
         accountRepository.save(account);
@@ -81,23 +84,23 @@ public class AccountService {
     @Transactional
     public PixTransferResponseDTO transferPix(String senderEmail, PixTransferRequestDTO request) {
         Account sender = accountRepository.findByUserEmail(senderEmail)
-                .orElseThrow(() -> new RuntimeException("Conta do remetente não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta do remetente não encontrada"));
 
         Account receiver = switch (request.pixKeyType()) {
             case EMAIL -> accountRepository.findByUserEmail(request.pixKey())
-                    .orElseThrow(() -> new RuntimeException("Conta do destinatário não encontrada"));
+                    .orElseThrow(() -> new AccountNotFoundException("Conta do destinatário não encontrada"));
             case CPF -> accountRepository.findByUserCpf(request.pixKey())
-                    .orElseThrow(() -> new RuntimeException("Conta do destinatário não encontrada"));
+                    .orElseThrow(() -> new AccountNotFoundException("Conta do destinatário não encontrada"));
             case PHONE -> accountRepository.findByUserTelephone(request.pixKey())
-                    .orElseThrow(() -> new RuntimeException("Conta do destinatário não encontrada"));
+                    .orElseThrow(() -> new AccountNotFoundException("Conta do destinatário não encontrada"));
             case RANDOM -> throw new UnsupportedOperationException("Chave aleatória ainda não suportada");
         };
 
         if (sender.getBalance().compareTo(request.amount()) < 0) {
-            throw new RuntimeException("Saldo insuficiente");
+            throw new InsufficientBalanceException("Saldo insuficiente");
         }
         if (sender.getId().equals(receiver.getId())) {
-            throw new RuntimeException("Não é permitido transferir para si mesmo");
+            throw new PixTransferNotAllowedException("Não é permitido transferir para si mesmo");
         }
 
         sender.setBalance(sender.getBalance().subtract(request.amount()));
@@ -142,10 +145,10 @@ public class AccountService {
 
     public BoletoPaymentResponseDTO payBoleto(String payerEmail, BoletoPaymentRequestDTO request) {
         Account payer = accountRepository.findByUserEmail(payerEmail)
-                .orElseThrow(() -> new RuntimeException("Conta com email fornecido não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta com email fornecido não encontrada"));
 
         if(payer.getBalance().compareTo(request.amount()) < 0) {
-            throw new RuntimeException("Saldo insuficiente");
+            throw new InsufficientBalanceException("Saldo insuficiente");
         }
 
         payer.setBalance(payer.getBalance().subtract(request.amount()));
@@ -178,7 +181,7 @@ public class AccountService {
 
     public List<TransactionStatementResponseDTO> getStatement(String email) {
         Account account = accountRepository.findByUserEmail(email)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
 
         List<TransactionStatementResponseDTO> transactions = new ArrayList<>();
 

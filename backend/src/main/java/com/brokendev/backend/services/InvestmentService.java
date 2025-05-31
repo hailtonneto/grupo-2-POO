@@ -5,6 +5,7 @@ import com.brokendev.backend.domain.Investment;
 import com.brokendev.backend.dto.investment.InvestmentRequestDTO;
 import com.brokendev.backend.dto.investment.InvestmentResponseDTO;
 import com.brokendev.backend.enums.InvestmentType;
+import com.brokendev.backend.exception.*;
 import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.InvestmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,9 +28,9 @@ public class InvestmentService {
     @Transactional
     public InvestmentResponseDTO invest(String userEmail, InvestmentRequestDTO request) {
         Account investor = accountRepository.findByUserEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
         if(investor.getBalance().compareTo(request.amount()) < 0){
-            throw new RuntimeException("Saldo insuficiente para investir");
+            throw new InsufficientBalanceException("Saldo insuficiente para investir");
         }
 
         // Debita o valor investido
@@ -65,7 +66,7 @@ public class InvestmentService {
 
     public List<InvestmentResponseDTO> listInvestments(String userEmail) {
         Account investor = accountRepository.findByUserEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
         return investmentRepository.findByInvestor(investor)
                 .stream()
                 .map(inv -> new InvestmentResponseDTO(
@@ -83,19 +84,19 @@ public class InvestmentService {
     @Transactional
     public InvestmentResponseDTO redeemInvestment(String userEmail, Long investmentId) {
         Account investor = accountRepository.findByUserEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
 
         Investment investment = investmentRepository.findById(investmentId)
-                .orElseThrow(() -> new RuntimeException("Investimento não encontrado"));
+                .orElseThrow(() -> new InvestmentNotFoundException("Investimento não encontrado"));
 
         if (!investment.getInvestor().getId().equals(investor.getId())) {
-            throw new RuntimeException("Investimento não pertence ao usuário");
+            throw new InvestmentOwnershipException("Investimento não pertence ao usuário");
         }
         if (investment.isRedeemed()) {
-            throw new RuntimeException("Investimento já foi resgatado");
+            throw new InvestmentAlreadyRedeemedException("Investimento já foi resgatado");
         }
         if (LocalDateTime.now().isBefore(investment.getMaturityDate())) {
-            throw new RuntimeException("Investimento ainda não venceu");
+            throw new InvestmentNotMaturedException("Investimento ainda não venceu");
         }
 
         // Credita o valor de retorno na conta

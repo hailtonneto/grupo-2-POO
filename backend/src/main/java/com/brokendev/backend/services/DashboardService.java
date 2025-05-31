@@ -2,6 +2,7 @@ package com.brokendev.backend.services;
 
 import com.brokendev.backend.dto.account.TransactionStatementResponseDTO;
 import com.brokendev.backend.dto.dashboard.DashboardResponseDTO;
+import com.brokendev.backend.exception.AccountNotFoundException;
 import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class DashboardService {
                 .orElseThrow(() -> new UsernameNotFoundException("usuário não encontrado"));
 
         var account = accountRepository.findByUser(user)
-                .orElseThrow(() -> new RuntimeException("conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("conta não encontrada"));
 
         List<TransactionStatementResponseDTO> lastTransactions = accountService.getStatement(userEmail)
                 .stream()
