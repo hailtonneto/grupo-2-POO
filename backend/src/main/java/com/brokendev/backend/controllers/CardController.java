@@ -1,6 +1,7 @@
 package com.brokendev.backend.controllers;
 
 import com.brokendev.backend.domain.User;
+import com.brokendev.backend.dto.card.CardBlockResponseDTO;
 import com.brokendev.backend.dto.card.CardCreateRequestDTO;
 import com.brokendev.backend.dto.card.CardResponseDTO;
 import com.brokendev.backend.services.CardService;
@@ -38,5 +39,17 @@ public class CardController {
     public ResponseEntity<List<CardResponseDTO>> listCards(
             @AuthenticationPrincipal User user) {
         return ResponseEntity.ok(cardService.listCards(user.getEmail()));
+    }
+
+    @Operation(summary = "Bloquear cartão", description = "Bloqueia o cartão pelo ID.")
+    @PatchMapping("/{id}/block")
+    public ResponseEntity<CardBlockResponseDTO> blockCard(@PathVariable Long id) {
+        return ResponseEntity.ok(cardService.blockCard(id));
+    }
+
+    @Operation(summary = "Desbloquear cartão", description = "Desbloqueia o cartão pelo ID.")
+    @PatchMapping("/{id}/unblock")
+    public ResponseEntity<CardBlockResponseDTO> unblockCard(@PathVariable Long id) {
+        return ResponseEntity.ok(cardService.unblockCard(id));
     }
 }
