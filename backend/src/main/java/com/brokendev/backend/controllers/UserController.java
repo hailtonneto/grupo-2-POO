@@ -8,6 +8,7 @@ import com.brokendev.backend.dto.profile.UserProfileUpdateResponseDTO;
 import com.brokendev.backend.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -47,7 +48,7 @@ public class UserController {
     @PutMapping("/profile")
     public ResponseEntity<UserProfileUpdateResponseDTO> updateProfile(
             @AuthenticationPrincipal User user,
-            @RequestBody UserProfileUpdateDTO dto
+            @RequestBody @Valid UserProfileUpdateDTO dto
     ) {
         UserProfileUpdateResponseDTO response = userService.updateProfile(user.getId(), dto);
         return ResponseEntity.ok(response);

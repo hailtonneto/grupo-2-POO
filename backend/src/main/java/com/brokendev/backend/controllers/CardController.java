@@ -6,6 +6,7 @@ import com.brokendev.backend.dto.card.CardCreateRequestDTO;
 import com.brokendev.backend.dto.card.CardResponseDTO;
 import com.brokendev.backend.services.CardService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,7 +28,7 @@ public class CardController {
     @PostMapping
     public ResponseEntity<CardResponseDTO> createCard(
             @AuthenticationPrincipal User user,
-            @RequestBody CardCreateRequestDTO request) {
+            @RequestBody @Valid CardCreateRequestDTO request) {
         return ResponseEntity.ok(cardService.createCard(user.getEmail(), request));
     }
 

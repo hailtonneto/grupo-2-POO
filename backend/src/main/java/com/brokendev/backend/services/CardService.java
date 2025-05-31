@@ -6,6 +6,8 @@ import com.brokendev.backend.domain.Card;
 import com.brokendev.backend.dto.card.CardBlockResponseDTO;
 import com.brokendev.backend.dto.card.CardCreateRequestDTO;
 import com.brokendev.backend.dto.card.CardResponseDTO;
+import com.brokendev.backend.exception.AccountNotFoundException;
+import com.brokendev.backend.exception.CardNotFoundException;
 import com.brokendev.backend.repositories.AccountRepository;
 import com.brokendev.backend.repositories.CardRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +29,7 @@ public class CardService {
     @Transactional
     public CardResponseDTO createCard(String userEmail, CardCreateRequestDTO request) {
         Account account = accountRepository.findByUserEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
 
         // Geração simples de número de cartão e validade
         String cardNumber = generateCardNumber();
@@ -56,7 +58,7 @@ public class CardService {
 
     public List<CardResponseDTO> listCards(String userEmail) {
         Account account = accountRepository.findByUserEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+                .orElseThrow(() -> new AccountNotFoundException("Conta não encontrada"));
         return cardRepository.findByAccount(account)
                 .stream()
                 .map(card -> new CardResponseDTO(
@@ -73,7 +75,7 @@ public class CardService {
     @Transactional
     public CardBlockResponseDTO blockCard(Long cardId) {
         Card card = cardRepository.findById(cardId)
-                .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
+                .orElseThrow(() -> new CardNotFoundException("Cartão não encontrado"));
         card.setBlocked(true);
         cardRepository.save(card);
         return new CardBlockResponseDTO(card.getId(), card.isBlocked(), "Cartão bloqueado com sucesso.");
@@ -82,7 +84,7 @@ public class CardService {
     @Transactional
     public CardBlockResponseDTO unblockCard(Long cardId) {
         Card card = cardRepository.findById(cardId)
-                .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
+                .orElseThrow(() -> new CardNotFoundException("Cartão não encontrado"));
         card.setBlocked(false);
         cardRepository.save(card);
         return new CardBlockResponseDTO(card.getId(), card.isBlocked(), "Cartão desbloqueado com sucesso.");
