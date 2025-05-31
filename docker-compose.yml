@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   postgres:
     image: postgres:16-alpine
@@ -13,23 +12,6 @@ services:
       - bank-network
     volumes:
       - bank-app-data:/var/lib/postgresql/data
-
-  backend:
-    build:
-      context: ./backend # ou use image: nome-da-imagem se estiver usando imagem pronta
-    ports:
-      - "8080:8080"
-    environment:
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: bank-app
-      DB_USERNAME: root
-      DB_PASSWORD: root
-      SPRING_PROFILES_ACTIVE: dev
-    depends_on:
-      - postgres
-    networks:
-      - bank-network
 
 networks:
   bank-network:
