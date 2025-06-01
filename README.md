@@ -16,25 +16,24 @@ Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesm
 
 ## 🏋🏻‍♀️ Entrega 02 (09/04/2025)
 
-- Diagrama de Classes: 
-- Issue/bug tracker: 
+- Diagrama de Classes: <img align="center" height="50px" width="50px" alt="Entrega 2" src="https://github.com/user-attachments/assets/77740b19-7e0d-426a-8cbb-2222c850886e"/>
+- Issue/bug tracker: <img align="center" height="50px" width="50px" alt="Issue/bug" src="https://github.com/user-attachments/assets/d53ad68c-ecb2-4373-b727-e5f9592b5eff"/>
 - Screencast: [YouTube](https://youtu.be/9nJGwfglaHM)
 
 ## 📱 Entrega 03 (30/04/2025)
 
-- Diagrama de Classes (Atualizado): 
-- Issue/bug tracker (Atualizado): 
+- Diagrama de Classes (Atualizado): <img align="center" height="50px" width="50px" alt="Entrega 3" src="https://github.com/user-attachments/assets/5b2090cf-d58d-4f12-9603-1650177e71e5"/>
+- Issue/bug tracker (Atualizado): <img align="center" height="50px" width="50px" alt="Issue/bug" src="https://github.com/user-attachments/assets/7f84fbf1-dfd9-48dc-a3e4-d9f0bf029171"/>
 - Screencast: [YouTube](https://youtube.com/shorts/N4QBy2_saGA)
-- Screencast (Teste Automatizado): 
+- Screencast (Teste Automatizado): ...
 
 ## ⚖️​ Entrega 04 (31/05/2025)
 
 - Screencast: [YouTube]()
-- Issue/bug tracker (Atualizado):
-- Diagrama de Classes (Atualizado): 
+- Issue/bug tracker (Atualizado): <img align="center" height="50px" width="50px" alt="Entrega 4" src="https://github.com/user-attachments/assets/6b5c7f8b-7dce-4613-9ea0-25aeed021f8d"/>
+- Diagrama de Classes (Atualizado): <img align="center" height="50px" width="50px" alt="Issue/bug" src="https://github.com/user-attachments/assets/8285d5f6-6261-45ee-bb79-094fd5782c05"/>
 - Screencast (Teste Automatizado): [YouTube]()
 
-<br>
 <br>
 
 # 🚀 Como rodar o projeto
@@ -112,7 +111,6 @@ http://localhost:8080
    * Escaneie o QR Code com o aplicativo **Expo Go** (Android/iOS) **ou**
    * Execute em um emulador Android/iOS configurado em sua máquina.
 
-<br>
 <br>
 
 ## 🌐 Autores
