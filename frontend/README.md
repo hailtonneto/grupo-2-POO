@@ -1,114 +1,127 @@
+# 📒 Cesar Bank
 
-# 📱 Front-End React Native — Cesar Bank
+Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesmo visa a criação de uma aplicação bancária, desenvolvida com **Java + Spring Boot** no seu backend e **React Native** no frontend. Além disso, o banco de dados escolhido foi **PostgresSQL** rodando em **Docker**.
 
-Aplicativo desenvolvido em React Native utilizando Expo, com foco em funcionalidades bancárias, pagamentos, Pix, cartões, investimentos e muito mais.
+## 🚀 Tecnologias Utilizadas
+- Java 17 + Spring Boot
+- React Native + TypeScript + StyleSheet CSS 
+- PostgreSQL 
+- Docker 
 
----
+## ✍🏻 Entrega 01 (22/03/2025)
 
-## 🚀 Como rodar a aplicação
+- Histórias de Usuário: [Docs](https://docs.google.com/document/d/1LPuNzA818wmWqfB-BqDbfuLC_J_DybOAsH4cZ6EV2io/edit?usp=sharing)
+- Prótotipo Lo-Fi: [Figma](https://www.figma.com/design/lzPT31RB0w2aoAeWWl14mn/Untitled?node-id=0-1&m=dev&t=9cF5jMYkNecUnVDZ-1)
+- Screencast do Protótipo: [YouTube](https://youtu.be/MXjEJrIXQXo)
 
-### ✅ Pré-requisitos
-- Ter o **Node.js** e **npm** instalados na máquina.
+## 🏋🏻‍♀️ Entrega 02 (09/04/2025)
 
-### ⚙️ Instalação das dependências
-Execute os seguintes comandos no terminal:
+- Diagrama de Classes: 
+- Issue/bug tracker: 
+- Screencast: [YouTube](https://youtu.be/9nJGwfglaHM)
 
-```bash
-npm install expo --global
-npm install
+## 📱 Entrega 03 (30/04/2025)
+
+- Diagrama de Classes (Atualizado): 
+- Issue/bug tracker (Atualizado): 
+- Screencast: [YouTube](https://youtube.com/shorts/N4QBy2_saGA)
+- Screencast (Teste Automatizado): 
+
+## ⚖️​ Entrega 04 (31/05/2025)
+
+- Screencast: [YouTube]()
+- Issue/bug tracker (Atualizado):
+- Diagrama de Classes (Atualizado): 
+- Screencast (Teste Automatizado): [YouTube]()
+
+<br>
+<br>
+
+# 🚀 Como rodar o projeto
+
+### ✅ Pré-requisitos gerais
+
+- **Java 17+**
+- **Node.js** e **npm**
+- **Docker** e **Docker Compose**
+- **IntelliJ IDEA** (ou outro IDE Java com suporte a Maven)
+- **Expo Go App** (em seu celular) ou um emulador Android/iOS
+
+## 🔧 1. Rodando o Back-End (Java + Spring Boot)
+
+### 📦 Dependências e configuração
+
+1. **Abra o IntelliJ IDEA**
+   - Vá em `File > Open` e selecione a pasta `backend`.
+
+2. **Importe o projeto como Maven**
+   - Certifique-se de que o arquivo `pom.xml` foi detectado.
+   - Caso não, clique com o botão direito no `pom.xml` e selecione **"Add as Maven Project"**.
+
+3. **Sincronize o Maven**
+   - O IntelliJ pode fazer isso automaticamente.
+   - Se necessário, clique em **"Reload Project"** na aba lateral do Maven.
+
+4. **Configure os containers com Docker**
+   - No terminal, dentro da pasta `backend`, execute:
+
+     ```bash
+     docker-compose up -d
+     ```
+
+   - Isso iniciará os serviços auxiliares, como o banco de dados.
+
+### ▶️ Executando a API
+
+- No IntelliJ, abra a classe principal (normalmente `Application.java`, com a anotação `@SpringBootApplication`) e clique em **Run**.
+- A API estará acessível em:
+
+```
+http://localhost:8080
 ```
 
-### ▶️ Rodando o projeto
+## 📱 2. Rodando o Front-End (React Native + Expo)
 
-```bash
-npx expo start
-```
+### 📦 Instalação das dependências
 
-- Esse comando abrirá o Expo DevTools no navegador.
-- Escaneie o QR Code com o aplicativo **Expo Go** no seu dispositivo físico ou rode em um emulador Android/iOS.
+1. No terminal, acesse a pasta `frontend`:
 
----
+ ```bash
+ cd frontend
+````
 
-## 🛠️ Ferramentas e Recursos Utilizados
+2. Instale as dependências do projeto:
 
-- [**Flaticon**](https://www.flaticon.com/) — Banco de ícones utilizados no app.
-- [**Online PNG Tools**](https://onlinepngtools.com/) — Ferramenta online para edição e manipulação de ícones.
+   ```bash
+   npm install --legacy-peer-deps
+   npm install --save-dev @react-native-community/cli@latest --legacy-peer-deps
+   ```
 
----
+### ▶️ Executando o App Mobile
 
-## 🎨 Créditos dos Ícones
+1. Inicie o servidor de desenvolvimento:
 
-### 🔑 Página de Login
-- Question — [Freepik](https://www.flaticon.com/authors/freepik)
-- Face ID — [HideMaru](https://www.flaticon.com/authors/hidemaru)
+   ```bash
+   npx expo start -c
+   ```
 
----
+2. Isso abrirá o **Expo DevTools** no navegador.
 
-### 🏠 Página Home
-- Eye — [Kiranshastry](https://www.flaticon.com/authors/kiranshastry)
-- Closed Eye — [Lizel Arina](https://www.flaticon.com/authors/lizel-arina)
-- Search — [Chanut](https://www.flaticon.com/authors/chanut)
-- Profile (UI) — [heisenberg_jr](https://www.flaticon.com/authors/heisenberg-jr)
-- Pix (Two Arrows) — [See Icons](https://www.flaticon.com/authors/see-icons)
-- DARF (Budget) — [rukanicon](https://www.flaticon.com/authors/rukanicon)
-- Barcode — [Freepik](https://www.flaticon.com/authors/freepik)
-- Cards (Credit Card) — [juicy_fish](https://www.flaticon.com/authors/juicy-fish)
-- Loan — [Icongeek26](https://www.flaticon.com/authors/icongeek26)
-- Investment — [Us and Up](https://www.flaticon.com/authors/us-and-up)
-- Recargas (Phone Call) — [aftab00267](https://www.flaticon.com/authors/aftab00267)
-- Shell Box (Fuel) — [Those Icons](https://www.flaticon.com/authors/those-icons)
-- Meu Porquinho (Piggy Bank) — [Freepik](https://www.flaticon.com/authors/freepik)
-- Home — [Dave Gandy](https://www.flaticon.com/authors/dave-gandy)
-- Travel (Plane) — [Freepik](https://www.flaticon.com/authors/freepik)
-- More — [Kirill Kazachek](https://www.flaticon.com/authors/kirill-kazachek)
+3. Para visualizar o app:
 
----
+   * Escaneie o QR Code com o aplicativo **Expo Go** (Android/iOS) **ou**
+   * Execute em um emulador Android/iOS configurado em sua máquina.
 
-### 💸 Página Pix
-- Key Access — [meaicon](https://www.flaticon.com/authors/meaicon)
-- My Keys — [Smashicons](https://www.flaticon.com/authors/smashicons)
-- Help (Headset) — [Dreamstale](https://www.flaticon.com/authors/dreamstale)
-- Meus Limites — [Freepik](https://www.flaticon.com/authors/freepik)
-- Extrato e Devoluções (Loan) — [Uniconlabs](https://www.flaticon.com/authors/uniconlabs)
+<br>
+<br>
 
----
+## 🌐 Autores
 
-### 💳 Página de Cartões
-- Settings — [Gregor Cresnar](https://www.flaticon.com/authors/gregor-cresnar)
-- QR Code — [Freepik](https://www.flaticon.com/authors/freepik)
-
----
-
-### 📑 Página de Pagamentos
-- Débito Automático — [Freepik](https://www.flaticon.com/authors/freepik)
-- Credit Card — [Freepik](https://www.flaticon.com/authors/freepik)
-
-> ℹ️ *Os ícones de Pix e DARF são reutilizados da Página Home.*
-
----
-
-### 🔋 Página de Recarga
-- Menu — [ariefstudio](https://www.flaticon.com/authors/ariefstudio)
-
----
-
-### 📈 Página de Investimentos
-- Brazil Flag — [Freepik](https://www.flaticon.com/authors/freepik)
-- Tesouro Direto — [justicon](https://www.flaticon.com/authors/justicon)
-- Bitcoin — [Freepik](https://www.flaticon.com/authors/freepik)
-- Dólar Invest (Transfer) — [Freepik](https://www.flaticon.com/authors/freepik)
-- Fixed Income (Invest) — [Icon Hubs](https://www.flaticon.com/authors/icon-hubs)
-- Poupança (Pig) — [kmg design](https://www.flaticon.com/authors/kmg-design)
-- Funds (Savings) — [Gajah Mada](https://www.flaticon.com/authors/gajah-mada)
-
----
-
-## 🔄 Observações
-
-- Alguns ícones foram **reutilizados entre diferentes páginas**, com o objetivo de manter consistência visual, simplicidade e flexibilidade no design.
-
----
-
-## 👨‍💻 Desenvolvido por
-
-Pedro Fernandes Cavalcanti Ferreira
+| Nome | GitHub | Linkedin | Foto |
+|------|--------|----------|------|
+| **Gabriel Nogueira Brandão Oliveira** | [gabrielnog13](https://github.com/gabrielnog13) | [Gabriel Nogueira](https://www.linkedin.com/in/gabrielnog13/) | <img style="border-radius: 50%" src="https://github.com/user-attachments/assets/697af017-6dfe-43eb-80bc-c275c3e27c87" width="80px;" alt="Gabriel"/> |
+| **Hailton de Melo Lima Neto** | [hailtonneto](https://github.com/hailtonneto) | [Hailton Neto](https://www.linkedin.com/in/hailton-neto-2a81a1196/) | <img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/130097508?v=4" width="80px;" alt="Hailton"/> |
+| **Luccas José Bezerra Fernandes** | [brokendeveloper](https://github.com/brokendeveloper) | [Luccas Fernandes](https://www.linkedin.com/in/luccas-fernandes-07a283239/) | <img style="border-radius: 50%" src="https://github.com/user-attachments/assets/a70ef660-ca80-4ee2-b52b-839a85b65863" width="80px;" alt="Luccas"/> |
+| **Pedro Fernandes Cavalcanti Ferreira** | [fernandes-pedro](https://github.com/fernandes-pedro) | [Pedro Fernandes Cavalcanti Ferreira](https://www.linkedin.com/in/pedro-fernandes-cavalcanti-ferreira-621591241/) | <img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/180231483?v=4" width="80px;" alt="Pedro"/> |
+| **Rayanne Falcão** | [rayannefalcaoo](https://github.com/rayannefalcaoo) | [Rayanne Falcão](https://www.linkedin.com/in/rayanne-falc%C3%A3o-1415b1270/) | <img style="border-radius: 50%" src="https://github.com/user-attachments/assets/3539371e-78bd-4184-8924-0eeb40d6d761" width="80px;" alt="Vinícius"/> |
+| **Vinícius de Souza Macedo** | [viniSouza06](https://github.com/viniSouza06) | [Vinícius Macedo](https://www.linkedin.com/in/vinicius-macedo-8a5873300/) | <img style="border-radius: 50%" src="https://github.com/user-attachments/assets/8bfa89eb-dda1-40e2-a611-7810fb55c169" width="80px;" alt="Vinícius"/> |

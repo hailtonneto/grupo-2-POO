@@ -3,7 +3,7 @@ import { Pressable, View, Text, StyleSheet } from "react-native"
 export default function Footer({ navigation, style }) {
   return (
     <View style={[styles.footer, style]}>
-      <Pressable onPress={() => navigation.navigate("Home")}>
+      <Pressable onPress={() => navigation.navigate("SignUp")}>
         <Text style={styles.text}>
           Trocar ou abrir conta
         </Text>
