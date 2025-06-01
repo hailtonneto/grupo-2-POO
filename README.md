@@ -29,10 +29,10 @@ Projeto para cadeira de Programação Orientada a Objeto da Cesar School. O mesm
 
 ## ⚖️​ Entrega 04 (31/05/2025)
 
-- Screencast: [YouTube]()
+- Screencast: [YouTube](https://youtube.com/shorts/jcEVdFuHXsg?feature=share)
 - Issue/bug tracker (Atualizado): <img align="center" height="50px" width="50px" alt="Entrega 4" src="https://github.com/user-attachments/assets/6b5c7f8b-7dce-4613-9ea0-25aeed021f8d"/>
 - Diagrama de Classes (Atualizado): <img align="center" height="50px" width="50px" alt="Issue/bug" src="https://github.com/user-attachments/assets/8285d5f6-6261-45ee-bb79-094fd5782c05"/>
-- Screencast (Teste Automatizado): [YouTube]()
+- Screencast (Teste Automatizado): [YouTube](https://youtu.be/v9_n5W2esG8)
 
 <br>
 
