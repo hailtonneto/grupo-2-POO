@@ -1,9 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-/* font-family: "Inter", sans-serif; */
-:root {
-    --cor-primaria: #3498db; 
-    --cor-secundaria: #2ecc71; 
-    --cor-terciaria: #e74c3c; 
-    --cor-fundo: #f4f4f4; 
-    --cor-texto: #333333; 
-}
